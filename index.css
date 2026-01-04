@@ -1,4 +1,29 @@
 html, body {
     margin: 0;
     padding: 0;
+    background-color: #121212;
+    color: #FFFFFF;
+}
+
+header {
+    position: relative;
+}
+
+.background {
+    background-image: url('./images/bg.png');
+    background-size: cover;
+    background-position: 100% 20%;
+    opacity: 20%;
+    height: 236px; /* 236px */
+}
+
+nav {
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    padding: 5.125em 2.625em 4.675em;
+    box-sizing: border-box;
 }
