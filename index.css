@@ -42,7 +42,54 @@ nav p {
 
 .search-bar {
     position: absolute;
+    display: flex;
+    justify-content: center;
     bottom: 0;
     left: 50%;
     transform: translate(-50%, 50%);
+    background-color: #2E2E2F;
+    height: 38px;
+    width: calc(100% - 2.75em * 2);
+    gap: 0.5em;
+    border-radius: 6px;
+    font-family: inherit;
+    margin-bottom: 0;
+    /* margin: 0 2.75em;
+    box-sizing: border-box; */
+}
+
+.search-bar i {
+    padding-left: 0.8125rem;
+    align-self: center;
+    color: #9CA3AF;
+}
+
+.search-bar input {
+    width: 100%;
+    background-color: inherit;
+    border: none;
+    color: #A5A5A5;
+}
+
+.search-bar button {
+    padding: 0 2.4375rem;
+    background-color: #4B4B4B;
+    border: none;
+    color: #ffffff;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+.search-bar input,
+.search-bar button {
+    font-size: 0.875em;
+    font-family: inherit;
+}
+
+.search-bar input:focus {
+    outline: none;
+}
+
+.search-bar button:active {
+    transform: scale(95%)
 }
