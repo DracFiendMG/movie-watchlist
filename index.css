@@ -4,6 +4,12 @@ html, body {
     background-color: #121212;
     color: #FFFFFF;
     font-family: "Inter", sans-serif;
+    height: 100vh;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
 }
 
 header {
@@ -92,4 +98,62 @@ nav p {
 
 .search-bar button:active {
     transform: scale(95%)
+}
+
+.empty-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.empty-section {
+    display: none;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.125em;
+    font-weight: 700;
+    color: #2E2E2F; */
+}
+
+.movie-section {
+    margin: 2.625em;
+}
+
+.movie-section img {
+    width: 99px;
+}
+
+.movie-card {
+    display: flex;
+    gap: 1.3125em;
+}
+
+.movie-card * {
+    margin: 0;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+.head {
+    display: flex;
+}
+
+.head h3 {
+    font-size: 1.125em;
+}
+
+.content p {
+    font-size: 0.75em;
+}
+
+.subhead {
+    display: flex;
+    gap: 1.125em;
 }

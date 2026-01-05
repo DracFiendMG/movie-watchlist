@@ -15,14 +15,33 @@
                 <h1>Find your film</h1>
                 <p>My Watchlist</p>
             </nav>
-            <form class="search-bar">
+            <form id="search-bar" class="search-bar">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" placeholder="Find your film...">
+                <input id="search" type="text" placeholder="Find your film...">
                 <button>Search</button>
             </form>
         </header>
-        <main>
-            <section>
+        <main class="movie-container empty-container">
+            <section class="empty-section">
+                <img src="./images/Icon.png">
+                <p>Start exploring</p>
+            </section>
+            <section class="movie-section">
+                <div class="movie-card">
+                    <img src="">
+                    <div class="content">
+                        <div class="head">
+                            <h3>Blade Runner</h3>
+                            <p>8.1</p>
+                        </div>
+                        <div class="subhead">
+                            <p>116min</p>
+                            <p>Drama, Mystery, Sci-fi</p>
+                            <p>Watchlist</p>
+                        </div>
+                        <p class="desc">Description</p>
+                    </div>
+                </div>
             </section>
         </main>
         <script src="index.js"></script>
