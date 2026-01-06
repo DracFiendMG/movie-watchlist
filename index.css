@@ -119,16 +119,23 @@ nav p {
 }
 
 .movie-section {
-    margin: 2.625em;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    margin: 3.8125em 2.625em;
 }
 
 .movie-section img {
     width: 99px;
+    border-radius: 2.33px;
 }
 
 .movie-card {
     display: flex;
+    align-items: center;
     gap: 1.3125em;
+    padding-bottom: 1.5em;
+    border-bottom: 1.5px solid #2C2C2C;
 }
 
 .movie-card * {
@@ -143,17 +150,51 @@ nav p {
 
 .head {
     display: flex;
+    align-items: center;
+    gap: 0.25em;
 }
 
 .head h3 {
     font-size: 1.125em;
+    font-weight: 500;
 }
 
 .content p {
     font-size: 0.75em;
+    font-weight: 400;
 }
 
 .subhead {
     display: flex;
+    align-items: center;
     gap: 1.125em;
+}
+
+.fa-star {
+    font-size: 0.9375em;
+    color: #FEC654;
+    margin-right: 0.25em;
+}
+
+.fa-circle-plus {
+    font-size: 1rem;
+}
+
+.watchlist {
+    display: flex;
+    align-items: center;
+    gap: 0.125em;
+}
+
+.desc {
+    line-height: 20px;
+    color: #A5A5A5;
+}
+
+.error-section {
+    padding: 0 7.1875em;
+    color: #787878;
+    font-weight: 700;
+    font-size: 1.125em;
+    text-align: center;
 }
