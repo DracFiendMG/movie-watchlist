@@ -123,6 +123,24 @@ a {
     color: #2E2E2F;
 }
 
+.empty-section .empty {
+    color: #787878;
+    margin-bottom: 0;
+}
+
+.empty-section .add {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    font-size: 0.875rem;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.empty-section .fa-circle-plus {
+    font-size: 1.125rem;
+}
+
 .movie-section {
     display: none;
     flex-direction: column;
@@ -181,7 +199,7 @@ a {
     margin-right: 0.25em;
 }
 
-.fa-circle-plus, .fa-circle-check {
+.fa-circle-plus, .fa-circle-check, .fa-circle-minus {
     font-size: 1rem;
 }
 
