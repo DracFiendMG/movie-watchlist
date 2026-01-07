@@ -10,6 +10,16 @@ document.addEventListener('click', (e) => {
         localStorage.setItem("watchlist", JSON.stringify(watchlist))
         movieDetails = movieDetails.filter(movie => movie.imdbID !== targetId)
         renderWatchlist()
+    } else if (e.target.dataset.more) {
+        const id = e.target.dataset.more
+        document.querySelector(`.more-${id}`).style.display = 'none'
+        document.querySelector(`.content-${id}`).style.display = 'inline'
+        document.querySelector(`.less-${id}`).style.display = 'inline'
+    } else if (e.target.dataset.less) {
+        const id = e.target.dataset.less
+        document.querySelector(`.more-${id}`).style.display = 'inline'
+        document.querySelector(`.content-${id}`).style.display = 'none'
+        document.querySelector(`.less-${id}`).style.display = 'none'
     }
 })
 
@@ -44,7 +54,7 @@ function renderWatchlist() {
                             Remove
                         </p>
                     </div>
-                    <p class="desc">${movie.Plot}</p>
+                    <p class="desc">${movie.Plot.length > 140 ? addReadMore(movie.Plot, movie.imdbID) : movie.Plot}</p>
                 </div>
             </div>
         `
@@ -63,6 +73,19 @@ function renderWatchlist() {
     `
 
     document.querySelector(".movie-section").style.display = 'flex'
+}
+
+function addReadMore(text, id) {
+    return text.substring(0, 140) 
+    + `<span class="read-more more-${id}" data-more="${id}">
+            ...Read More
+        </span>
+        <span class="read-content content-${id}">` 
+    + text.substring(140) 
+    + `</span>
+        <span class="read-less less-${id}" data-less="${id}">
+            ...Read Less
+        </span>`
 }
 
 fetchMovieDetails()
