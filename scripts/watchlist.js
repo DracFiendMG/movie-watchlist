@@ -15,7 +15,7 @@ document.addEventListener('click', (e) => {
 
 function fetchMovieDetails() {
     const moviePromises = watchlist.map(async imdbID => {
-        return await fetch(`http://www.omdbapi.com/?i=${imdbID}&apikey=f000f77b`)
+        return await fetch(`http://www.omdbapi.com/?i=${imdbID}&apikey=f000f77b&plot=full`)
             .then(res => res.json())
     })
 

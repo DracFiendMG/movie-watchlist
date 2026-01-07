@@ -2,8 +2,6 @@ let movies = []
 let movieDetails = []
 let watchlist = JSON.parse(localStorage.getItem("watchlist")) || []
 
-console.log(watchlist)
-
 const emptySection = document.querySelector(".empty-section")
 const movieSection = document.querySelector(".movie-section")
 const errorSection = document.querySelector(".error-section")
@@ -19,6 +17,16 @@ document.addEventListener('click', (e) => {
         }
         localStorage.setItem("watchlist", JSON.stringify(watchlist))
         renderMovies()
+    } else if (e.target.dataset.more) {
+        const id = e.target.dataset.more
+        document.querySelector(`.more-${id}`).style.display = 'none'
+        document.querySelector(`.content-${id}`).style.display = 'inline'
+        document.querySelector(`.less-${id}`).style.display = 'inline'
+    } else if (e.target.dataset.less) {
+        const id = e.target.dataset.less
+        document.querySelector(`.more-${id}`).style.display = 'inline'
+        document.querySelector(`.content-${id}`).style.display = 'none'
+        document.querySelector(`.less-${id}`).style.display = 'none'
     }
 })
 
@@ -38,7 +46,6 @@ function searchResults(text) {
     fetch(`http://www.omdbapi.com/?apikey=f000f77b&s=${text}`)
         .then(res => res.json())
         .then(data => {
-            console.log(data.Search)
             if (data.Search.length === 0) {
                 throw new Error("No movies found")
             }
@@ -58,20 +65,20 @@ function searchResults(text) {
 
 function fetchMovieDetails() {
     const moviePromises = movies.map(async movie => {
-        return await fetch(`http://www.omdbapi.com/?i=${movie.imdbID}&apikey=f000f77b`)
+        return await fetch(`http://www.omdbapi.com/?i=${movie.imdbID}&apikey=f000f77b&plot=full`)
             .then(res => res.json())
     })
 
     Promise.all(moviePromises)
         .then(details => {
             movieDetails = details
-            console.log(movieDetails)
             renderMovies()
         })
 }
 
 function renderMovies() {
     let moviesHtml = movieDetails.map(movie => {
+        addReadMore(movie.Plot)
         return `
             <div class="movie-card">
                 <img src="${movie.Poster}">
@@ -91,7 +98,7 @@ function renderMovies() {
                             Watchlist
                         </p>
                     </div>
-                    <p class="desc">${movie.Plot}</p>
+                    <p class="desc">${movie.Plot.length > 140 ? addReadMore(movie.Plot, movie.imdbID) : movie.Plot}</p>
                 </div>
             </div>
         `
@@ -104,4 +111,17 @@ function renderError() {
     document.querySelector(".error-section").innerHTML = `
         <p>Unable to find what you’re looking for. Please try another search.</p>
     `
+}
+
+function addReadMore(text, id) {
+    return text.substring(0, 140) 
+    + `<span class="read-more more-${id}" data-more="${id}">
+            ...Read More
+        </span>
+        <span class="read-content content-${id}">` 
+    + text.substring(140) 
+    + `</span>
+        <span class="read-less less-${id}" data-less="${id}">
+            ...Read Less
+        </span>`
 }
