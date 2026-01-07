@@ -25,7 +25,7 @@ document.addEventListener('click', (e) => {
 
 function fetchMovieDetails() {
     const moviePromises = watchlist.map(async imdbID => {
-        return await fetch(`http://www.omdbapi.com/?i=${imdbID}&apikey=f000f77b&plot=full`)
+        return await fetch(`https://www.omdbapi.com/?i=${imdbID}&apikey=f000f77b&plot=full`)
             .then(res => res.json())
     })
 
@@ -72,7 +72,9 @@ function renderWatchlist() {
         }
     `
 
-    document.querySelector(".movie-section").style.display = 'flex'
+    if (movieDetails.length !== 0) {
+        document.querySelector(".movie-section").style.display = 'flex'
+    }
 }
 
 function addReadMore(text, id) {

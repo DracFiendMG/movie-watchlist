@@ -43,7 +43,7 @@ searchForm.addEventListener('submit', (e) => {
 })
 
 function searchResults(text) {
-    fetch(`http://www.omdbapi.com/?apikey=f000f77b&s=${text}`)
+    fetch(`https://www.omdbapi.com/?apikey=f000f77b&s=${text}`)
         .then(res => res.json())
         .then(data => {
             if (data.Search.length === 0) {
@@ -65,7 +65,7 @@ function searchResults(text) {
 
 function fetchMovieDetails() {
     const moviePromises = movies.map(async movie => {
-        return await fetch(`http://www.omdbapi.com/?i=${movie.imdbID}&apikey=f000f77b&plot=full`)
+        return await fetch(`https://www.omdbapi.com/?i=${movie.imdbID}&apikey=f000f77b&plot=full`)
             .then(res => res.json())
     })
 
