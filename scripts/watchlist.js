@@ -25,7 +25,7 @@ document.addEventListener('click', (e) => {
 
 function fetchMovieDetails() {
     const moviePromises = watchlist.map(async imdbID => {
-        return await fetch(`https://www.omdbapi.com/?i=${imdbID}&apikey=f000f77b&plot=full`)
+        return await fetch(`/.netlify/functions/omdb?i=${imdbID}&plot=full`)
             .then(res => res.json())
     })
 
