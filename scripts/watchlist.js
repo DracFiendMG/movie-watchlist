@@ -1,6 +1,8 @@
 let watchlist = JSON.parse(localStorage.getItem("watchlist")) || []
 let movieDetails = []
 
+const movieContainer = document.querySelector(".movie-container")
+
 console.log(watchlist)
 
 document.addEventListener('click', (e) => {
@@ -34,6 +36,9 @@ function fetchMovieDetails() {
             movieDetails = details
             renderWatchlist()
         })
+        .catch(error => {
+            movieContainer.innerHTML = emptyWatchList()
+        })
 }
 
 function renderWatchlist() {
@@ -60,12 +65,9 @@ function renderWatchlist() {
         `
     }).join("")
 
-    document.querySelector(".movie-container").innerHTML = `
+    movieContainer.innerHTML = `
         ${movieDetails.length === 0 
-            ? `<section class="empty-section">
-                    <p class="empty">Your watchlist is looking a little empty...</p>
-                    <a href="index.html"><p class="add"><i class="fa-solid fa-circle-plus"></i>Let's add some movies!</p></a>
-                </section>` 
+            ? emptyWatchList() 
             : `<section class="movie-section">
                     ${moviesHtml}
                 </section>`
@@ -75,6 +77,13 @@ function renderWatchlist() {
     if (movieDetails.length !== 0) {
         document.querySelector(".movie-section").style.display = 'flex'
     }
+}
+
+function emptyWatchList() {
+    return `<section class="empty-section">
+                    <p class="empty">Your watchlist is looking a little empty...</p>
+                    <a href="index.html"><p class="add"><i class="fa-solid fa-circle-plus"></i>Let's add some movies!</p></a>
+                </section>` 
 }
 
 function addReadMore(text, id) {

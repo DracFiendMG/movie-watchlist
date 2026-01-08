@@ -13,8 +13,17 @@ exports.handler = async (event) => {
         const response = await fetch(url)
         const data = await response.json()
 
-        return data
+        return {
+            statusCode: 200,
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        }
     } catch (error) {
-        return error
+        return {
+            statusCode: 500,
+            body: JSON.stringify({ error: "Failed to fetch from OMDB" })
+        }
     }
 }
